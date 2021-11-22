@@ -40,7 +40,8 @@ export default {
         data: this.formGroups
       }
       console.log(formData);
-      this.$parent.changeComponent('formgroups-list', formData);
+      // this.$parent.changeComponent('formgroups-list', formData);
+      this.$emit('update-groupfields-list', formData);
     },
   }
 };

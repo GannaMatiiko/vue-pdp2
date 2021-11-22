@@ -1,13 +1,15 @@
 <template>
-    <button @click="addForm">Go to form</button>
+  <router-link to="/add-form-group">Add group field</router-link>
 
-  <div v-for="form in existingForms" :key="form.title">
-    <div @click="showInputs(form)" class="list-element">
-        {{ form.title }} ({{ form.data.length }})
+  <div v-if="existingForms">
+    <div v-for="form in existingForms" :key="form.title">
+      <div @click="showInputs(form)" class="list-element">{{ form.title }} ({{ form.data.length }})</div>
+      {{form}}
+      <hr />
     </div>
-    {{form}}
-    <hr>
   </div>
+
+  <div v-else>You haven't add any group fields yet</div>
 </template>
 
 <script>
@@ -17,18 +19,15 @@ export default {
     showInputs(formData) {
       console.log(formData);
     },
-    addForm() {
-        this.$parent.changeComponent('add-form-group');
-    }
   }
 };
 </script>
 
 <style scoped>
 .list-element {
-    cursor: pointer;
+  cursor: pointer;
 }
 .list-element:hover {
-    color: rgb(42, 119, 192);
+  color: rgb(42, 119, 192);
 }
 </style>
