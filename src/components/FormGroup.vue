@@ -29,7 +29,13 @@
         <input type="text" name="default" @change="updateInputObj">
     </div>
     <div v-if="inputs.type === 'image'">
-        image preview options
+        <span>Preview size </span>
+        <select name="preview" @change="updateInputObj">
+            <option disabled selected>Choose image size</option>
+            <option value="small">Small(150x150)</option>
+            <option value="medium">Small(300x300)</option>
+            <option value="large">Small(450x450)</option>
+        </select>
     </div>
 
 </template>

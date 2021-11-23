@@ -1,6 +1,6 @@
 <template>
   <the-header></the-header>
-  <router-view></router-view>
+  <router-view @update-groupfields-list="getFormData" :existingForms="forms"></router-view>
   <!-- <component :is="currentComponent" :existingForms="forms"></component> -->
 </template> 
 
@@ -19,16 +19,22 @@ export default {
   data() {
     return {
       currentComponent: "add-form-group",
-      forms: []
+      forms: {}
     };
   },
   methods: {
-    changeComponent(component, payload) {
-      this.currentComponent = component;
+    // changeComponent(component, payload) {
+    //   this.currentComponent = component;
 
-      if (payload) {
-        this.forms.push(payload);
-      }
+    //   if (payload) {
+    //     this.forms.push(payload);
+    //   }
+    // },
+    getFormData(payload, id) {
+      console.log('we get data in app comp', payload);
+      // this.forms.push(payload);
+      this.forms[id] = payload;
+      console.log(this.forms, 'HHHHHHHHHHHH')
     }
   }
 };

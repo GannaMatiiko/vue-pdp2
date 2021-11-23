@@ -11,7 +11,8 @@
     <hr />
   </div>
 
-  <button v-if="formGroups.length" @click="saveFormData">Save and go to list</button>
+  <!-- <button v-if="formGroups.length" @click="saveFormData">Save and go to list</button> -->
+  <router-link to="/forms-list" v-if="formGroups.length" @click="saveFormData">Save and go to list</router-link>
 </template>
 
 <script>
@@ -35,13 +36,15 @@ export default {
       console.log(this.formGroups, "");
     },
     saveFormData() {
+      let randomId = Math.floor(Date.now() * Math.random());
       const formData = {
         title: this.title,
+        //id: randomId,
         data: this.formGroups
       }
       console.log(formData);
       // this.$parent.changeComponent('formgroups-list', formData);
-      this.$emit('update-groupfields-list', formData);
+      this.$emit('update-groupfields-list', formData, randomId);
     },
   }
 };
