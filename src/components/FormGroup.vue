@@ -22,7 +22,7 @@
     <div>
         <span>Required?</span>
         <input type="radio" value="yes" name="isRequired" @change="updateInputObj">
-        <input type="radio" value="no" name="isRequired" @change="updateInputObj">
+        <input type="radio" value="null" name="isRequired" @change="updateInputObj">
     </div>
     <div>
         <span>Default value</span>

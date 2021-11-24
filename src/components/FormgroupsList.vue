@@ -19,9 +19,7 @@
 export default {
   props: ["existingForms"],
   methods: {
-    showInputs(formData) {
-      console.log(formData);
-    },
+
   }
 };
 </script>

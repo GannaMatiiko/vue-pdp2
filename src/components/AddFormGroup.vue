@@ -39,11 +39,9 @@ export default {
       let randomId = Math.floor(Date.now() * Math.random());
       const formData = {
         title: this.title,
-        //id: randomId,
         data: this.formGroups
       }
       console.log(formData);
-      // this.$parent.changeComponent('formgroups-list', formData);
       this.$emit('update-groupfields-list', formData, randomId);
     },
   }
