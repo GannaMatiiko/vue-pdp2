@@ -3,10 +3,9 @@
 
   <div v-if="existingForms">
     Существующие группы {{existingForms}}
+    <div style="height: 50px;"></div>
+
     <div v-for="(form, index) in existingForms" :key="index">
-      <!-- <div @click="showInputs(form)" class="list-element">{{ form.title }} ({{ form.data.length }})</div>
-      {{form}}
-      <hr /> -->
       <router-link :to="`/fieldgroup-card/${index}`">{{form.title}} ({{ form.data.length }}) {{index}} </router-link>
       <button @click="deleteGroup(index)">Delete</button>
       {{ form }}

@@ -33,8 +33,8 @@
         <select name="preview" @change="updateInputObj">
             <option disabled selected>Choose image size</option>
             <option value="small">Small(150x150)</option>
-            <option value="medium">Small(300x300)</option>
-            <option value="large">Small(450x450)</option>
+            <option value="medium">Medium(300x300)</option>
+            <option value="large">Large(450x450)</option>
         </select>
     </div>
 
@@ -51,6 +51,9 @@ export default {
     },
     methods: {
         updateInputObj(e) {
+            if (e.target.type !== 'image') {
+                delete this.inputs.preview;
+            }
             this.inputs[e.target.name] = e.target.value;
             this.$emit('content-changed', this.inputs, this.index);
         }

@@ -1,6 +1,6 @@
 <template>
   <the-header></the-header>
-  <router-view @update-groupfields-list="getFormData" :existingForms="forms" @init-deleting="deleteGroup"></router-view>
+  <router-view @update-groupfields-list="getFormData" :existingForms="forms" @init-deleting="deleteGroup" @trigger-edit="editGroup"></router-view>
 </template> 
 
 <script>
@@ -27,6 +27,11 @@ export default {
       console.log('индекс в эпп вью', index);
       delete this.forms[index];
             console.log(this.forms);
+    },
+    editGroup(index, title, editedData) {
+      this.forms[index].title = title;
+      console.log('отредаченные данные в эпп', editedData);
+      console.log(this.forms);
     }
   }
 };
