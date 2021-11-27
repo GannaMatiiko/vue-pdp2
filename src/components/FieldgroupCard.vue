@@ -35,8 +35,8 @@
 
       <div>
         Required?
-        <input type="radio" value="yes" name="isRequired" :checked="input.isRequired === 'yes'" @change="editInputs($event, i)">
-        <input type="radio" value="null" name="isRequired" :checked="input.isRequired === 'null'" @change="editInputs($event, i)">
+        <input type="radio" value="yes" :name="`isRequired-${i}`" :checked="input.isRequired === 'yes'" @change="editInputs($event, i, 'isRequired')">
+        <input type="radio" value="null" :name="`isRequired-${i}`" :checked="input.isRequired === 'null'" @change="editInputs($event, i, 'isRequired')">
       </div>
 
       <div>
@@ -56,7 +56,6 @@
       </div>
       <hr>
     </div>
-    <!-- <button @click="emitEdit">Save</button> -->
     <router-link to="/forms-list" @click="emitEdit">Save and return to list</router-link>
 </template>
 
@@ -77,16 +76,15 @@ export default {
   },
 
   methods: {
-    updateIsRequired(e) {
-      console.log(e.target.value);
-    },
-    editInputs(e, position) {
-      console.log(e.target.name, e.target.value, position);
-      this.data[position][e.target.name] = e.target.value;
-      console.log(this.data);
+    editInputs(e, position, inputName) {
+      if (e.target.type !== 'image') {
+        delete this.data[position].preview;
+      }
+      let name = inputName || e.target.name;
+      this.data[position][name] = e.target.value;
     },
     emitEdit() {
-      this.$emit('trigger-edit', this.requestedId, this.title, this.data);
+      this.$emit('trigger-edit', this.requestedId, this.title);
       console.log('edit emitted');
     }
   }

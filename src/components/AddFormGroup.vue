@@ -11,7 +11,6 @@
     <hr />
   </div>
 
-  <!-- <button v-if="formGroups.length" @click="saveFormData">Save and go to list</button> -->
   <router-link to="/forms-list" v-if="formGroups.length" @click="saveFormData">Save and go to list</router-link>
 </template>
 
@@ -33,7 +32,6 @@ export default {
     },
     updateFormgroupContent(inputsData, index) {
       this.formGroups[index] = inputsData;
-      console.log(this.formGroups, "");
     },
     saveFormData() {
       let randomId = Math.floor(Date.now() * Math.random());
@@ -41,7 +39,6 @@ export default {
         title: this.title,
         data: this.formGroups
       }
-      console.log(formData);
       this.$emit('update-groupfields-list', formData, randomId);
     },
   }

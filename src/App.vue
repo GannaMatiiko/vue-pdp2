@@ -18,20 +18,13 @@ export default {
   },
   methods: {
     getFormData(payload, id) {
-      console.log('we get data in app comp', payload);
-      // this.forms.push(payload);
       this.forms[id] = payload;
-      console.log(this.forms, 'HHHHHHHHHHHH')
     },
     deleteGroup(index) {
-      console.log('индекс в эпп вью', index);
       delete this.forms[index];
-            console.log(this.forms);
     },
-    editGroup(index, title, editedData) {
+    editGroup(index, title) {
       this.forms[index].title = title;
-      console.log('отредаченные данные в эпп', editedData);
-      console.log(this.forms);
     }
   }
 };

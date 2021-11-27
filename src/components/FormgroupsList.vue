@@ -1,7 +1,7 @@
 <template>
   <router-link to="/add-form-group">Add group field</router-link>
 
-  <div v-if="existingForms">
+  <div v-if="existingForms && Object.keys(existingForms).length > 0">
     Существующие группы {{existingForms}}
     <div style="height: 50px;"></div>
 
@@ -21,7 +21,6 @@ export default {
   props: ["existingForms"],
   methods: {
     deleteGroup(index) {
-      console.log(index);
       this.$emit('init-deleting', index);
     }
   }
