@@ -2,6 +2,7 @@
   <header>
     <nav class="nav-links">
       <router-link to="/">Home</router-link>
+      <router-link to="/pages-list">Pages</router-link>
       <div>
         <router-link to="/forms-list">Go to group fields</router-link>
         <router-link to="/add-form-group">Add group field</router-link>

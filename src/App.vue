@@ -1,10 +1,17 @@
 <template>
   <the-header></the-header>
-  <router-view @update-groupfields-list="getFormData" :existingForms="forms" @init-deleting="deleteGroup" @trigger-edit="editGroup"></router-view>
+  <router-view
+    :existingForms="forms"
+    :createdPages="availablePages"
+    @update-groupfields-list="getFormData"
+    @init-deleting="deleteGroup"
+    @trigger-edit="editGroup"
+    @pass-pages="setPages"
+  ></router-view>
 </template> 
 
 <script>
-import TheHeader from "./components/blocks/TheHeader.vue"
+import TheHeader from "./components/blocks/TheHeader.vue";
 
 export default {
   name: "App",
@@ -13,7 +20,8 @@ export default {
   },
   data() {
     return {
-      forms: {}
+      forms: {},
+      availablePages: {}
     };
   },
   methods: {
@@ -25,6 +33,9 @@ export default {
     },
     editGroup(index, title) {
       this.forms[index].title = title;
+    },
+    setPages(pages) {
+      this.availablePages = pages;
     }
   }
 };
