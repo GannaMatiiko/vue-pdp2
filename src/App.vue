@@ -35,8 +35,9 @@ export default {
     editGroup(index, title) {
       this.forms[index].title = title;
     },
-    updatePagesObject(pages) {
-      this.savedPages = pages;
+    updatePagesObject(url) {
+      console.log(url, this.savedPages, 'debug')
+      this.savedPages[url] = {};
     }
   }
 };

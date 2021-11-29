@@ -1,11 +1,5 @@
 <template>
   Pages List
-  <div v-if="createdPages && Object.keys(createdPages).length !== 0">
-      изменения внутри пейдж листа
-    <div v-for="(page, index) in createdPages" :key="page.index">
-      <router-link :to="`/page/${index}`">{{ index }} </router-link>
-    </div>
-  </div>
   <div v-if="uploadedPages && Object.keys(uploadedPages).length !== 0">
       изменения пришли с родителя
       <div v-for="(page, index) in uploadedPages" :key="page.index">
@@ -24,14 +18,12 @@ export default {
   data() {
     return {
       url: "",
-      createdPages: {},
     };
   },
   methods: {
     saveUrl() {
-      this.createdPages[this.url] = {};
+      this.$emit("save-pages", this.url);
       this.url = "";
-      this.$emit("save-pages", this.createdPages);
     },
   },
 };
