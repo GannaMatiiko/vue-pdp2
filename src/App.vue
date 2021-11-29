@@ -2,11 +2,11 @@
   <the-header></the-header>
   <router-view
     :existingForms="forms"
-    :createdPages="availablePages"
+    :uploadedPages="savedPages"
     @update-groupfields-list="getFormData"
     @init-deleting="deleteGroup"
     @trigger-edit="editGroup"
-    @pass-pages="setPages"
+    @save-pages="updatePagesObject"
   ></router-view>
 </template> 
 
@@ -21,8 +21,9 @@ export default {
   data() {
     return {
       forms: {},
-      availablePages: {}
+      savedPages: {}
     };
+
   },
   methods: {
     getFormData(payload, id) {
@@ -34,8 +35,8 @@ export default {
     editGroup(index, title) {
       this.forms[index].title = title;
     },
-    setPages(pages) {
-      this.availablePages = pages;
+    updatePagesObject(pages) {
+      this.savedPages = pages;
     }
   }
 };

@@ -22,7 +22,12 @@
 
     <div>
       Field name
-      <input type="text" name="name" :value="input.name" @change="editInputs($event, i)" />
+      <input
+        type="text"
+        name="name"
+        :value="input.name"
+        @change="editInputs($event, i)"
+      />
     </div>
 
     <div>
@@ -68,8 +73,12 @@
 
     <div v-if="data[i].type === 'image'">
       Preview size
-      <b>{{input.preview ? input.preview : ''}}</b>
-      <select name="preview" :value="input.preview" @change="editInputs($event, i)">
+      <b>{{ input.preview ? input.preview : "" }}</b>
+      <select
+        name="preview"
+        :value="input.preview"
+        @change="editInputs($event, i)"
+      >
         <option disabled selected>Choose image size</option>
         <option value="small">Small(150x150)</option>
         <option value="medium">Medium(300x300)</option>
@@ -78,40 +87,42 @@
     </div>
     <hr />
   </div>
-  <router-link to="/forms-list" @click="emitEdit">Save and return to list</router-link>
+  <router-link to="/forms-list" @click="emitEdit"
+    >Save and return to list</router-link
+  >
 
   <div>
-    <h5>Show conditions -- select page(s) where you want to display this form group</h5>
+    <h5>
+      Show conditions -- select page(s) where you want to display this form
+      group
+    </h5>
   </div>
-  <div v-for="(page, index) in createdPages" :key="page.index">{{index}}</div>
-  <Multiselect
+  <div v-for="(page, index) in createdPages" :key="page.index">{{ index }}</div>
+  <!-- <multiselect
     v-model="chosenPages"
     mode="tags"
     placeholder="Choose one or more pages"
     :closeOnSelect="false"
     :createTag="true"
-    :options="options"
-  />
+    :options="pageOptions"
+  ></multiselect> -->
+  <!-- <select name="technology" multiple>
+    <option v-for="page in pageOptions" :key="page">{{page}}</option>
+  </select> -->
 </template>
 
 <script>
-import Multiselect from "@vueform/multiselect";
+// import Multiselect from "@vueform/multiselect";
 export default {
   components: {
-    Multiselect
+    // Multiselect
   },
-  props: ["existingForms", "createdPages"],
+  props: ["existingForms"],
   data() {
     return {
       requestedId: this.$route.params.id,
       title: "",
       data: {},
-      chosenPages: [],
-      options: [
-        { value: "batman", label: "111" },
-        { value: "robin", label: "222" },
-        { value: "joker", label: "333" }
-      ]
     };
   },
   created() {
@@ -119,7 +130,6 @@ export default {
     this.title = form.title;
     this.data = form.data;
   },
-
   methods: {
     editInputs(e, position, inputName) {
       if (e.target.type !== "image") {
@@ -131,8 +141,8 @@ export default {
     emitEdit() {
       this.$emit("trigger-edit", this.requestedId, this.title);
       console.log("edit emitted");
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 
 import App from './App.vue';
 import Home from './components/Home.vue';
@@ -10,7 +10,7 @@ import AddFormGroup from './components/AddFormGroup.vue';
 import FieldgroupCard from './components/FieldgroupCard.vue';
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes: [
         { path: '/', component: Home },
         { path: '/pages-list', component: PagesList },
