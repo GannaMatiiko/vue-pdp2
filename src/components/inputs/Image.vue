@@ -1,5 +1,5 @@
 <template>
-    <input type="file">
+    <input type="file" accept="image/png, image/jpeg">
     <br>
     <img src="#" alt="">
 </template>
