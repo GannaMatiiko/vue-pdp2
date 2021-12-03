@@ -1,33 +1,26 @@
 <template>
-  <editor-content :editor="editor" />
+  <quill-editor
+    :options="options"
+    v-model="editorContent"
+  ></quill-editor>
 </template>
 
 <script>
-import { Editor, EditorContent } from '@tiptap/vue-3'
-import StarterKit from '@tiptap/starter-kit'
-
+import { QuillEditor } from "@vueup/vue-quill";
+import "@vueup/vue-quill/dist/vue-quill.snow.css";
 export default {
   components: {
-    EditorContent,
+    QuillEditor,
   },
-
   data() {
     return {
-      editor: null,
-    }
+      options: {
+        placeholder: "Enter something",
+        theme: "snow",
+      },
+      editorContent: "",
+    };
   },
-
-  mounted() {
-    this.editor = new Editor({
-      content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
-      extensions: [
-        StarterKit,
-      ],
-    })
-  },
-
-  beforeUnmount() {
-    this.editor.destroy()
-  },
-}
+};
 </script>
+
